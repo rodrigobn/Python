@@ -96,6 +96,3 @@ imprimeLinhaSeparadora("*", 30)
 imprimeMatrizCompleta()
 imprimeLinhaSeparadora("*", 30)
 '''
-
-nome = input()
-print(nome)
