@@ -79,8 +79,28 @@ def criaMatrizAleatoria(linha, coluna, valorMin, valorMax):
 			matriz[i][j] = randint(valorMin, valorMax)
 	return matriz
 
-matriz = criaMatrizAleatoria(4, 4, 0, 10)
+def criaDefinicaoDeMatrizVisual(linha, coluna):
+	"""
+    Cria a definição matematica de uma Matriz de dimensão i x j com valores Aij
+    """
+	matriz = criaMatrizZerada(linha, coluna)
+	for i in range(linha):
+		for j in range(coluna):
+			matriz[i][j] = "{}{}".format(i, j)
+	return matriz
+
+def criaMatrizTransposta(matriz):
+	matrizTransposta = criaMatrizZerada(3, 3)
+
+	for linha in range(len(matrizTransposta)):
+		for coluna in range(len(matrizTransposta[0])):
+			matrizTransposta[linha][coluna] = matriz[coluna][linha]
+	
+	return matrizTransposta
+
+
 '''
+matriz = criaMatrizAleatoria(4, 4, 0, 10)
 imprimeMatriz(matriz)
 imprimeLinhaSeparadora("*", 30)
 imprimeMatrizPorLinha(matriz)

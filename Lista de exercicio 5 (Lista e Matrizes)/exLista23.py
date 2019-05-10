@@ -8,7 +8,7 @@ ou uma mensagem de “não encontrado”.
 from matrizes import *
 
 matriz = criaMatrizAleatoria(5, 5, 0, 10)
-valor = 10 #int(input("Valor: "))
+valor = int(input("Valor: "))
 linhaValor = []
 colunaValor = []
 
