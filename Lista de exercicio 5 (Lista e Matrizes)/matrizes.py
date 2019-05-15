@@ -81,8 +81,8 @@ def criaMatrizAleatoria(linha, coluna, valorMin, valorMax):
 
 def criaDefinicaoDeMatrizVisual(linha, coluna):
 	"""
-    Cria a definição matematica de uma Matriz de dimensão i x j com valores Aij
-    """
+  Cria a definição matematica de uma Matriz de dimensão i x j com valores Aij
+  """
 	matriz = criaMatrizZerada(linha, coluna)
 	for i in range(linha):
 		for j in range(coluna):
@@ -90,6 +90,9 @@ def criaDefinicaoDeMatrizVisual(linha, coluna):
 	return matriz
 
 def criaMatrizTransposta(matriz):
+	"""
+  Cria uma matriz nova a partir de outra matriz, trocando linha por coluna
+  """
 	matrizTransposta = criaMatrizZerada(3, 3)
 
 	for linha in range(len(matrizTransposta)):
@@ -98,21 +101,39 @@ def criaMatrizTransposta(matriz):
 	
 	return matrizTransposta
 
+def criaMatrizTriangularInferior(matriz):
+	"""
+  Cria uma matriz nova a partir de outra matriz zerando todos os elementos acima da diagonal principal
+  """
+	matrizTriangularInferior = criaMatrizZerada(len(matriz),len(matriz[0]))
 
-'''
-matriz = criaMatrizAleatoria(4, 4, 0, 10)
-imprimeMatriz(matriz)
-imprimeLinhaSeparadora("*", 30)
-imprimeMatrizPorLinha(matriz)
-imprimeLinhaSeparadora("*", 30)
-imprimeMatrizPorElemento(matriz)
-imprimeLinhaSeparadora("*", 30)
-imprimeListaComElementosZero(2)
-imprimeLinhaSeparadora("*", 30)
-imprimeMatrizComDimensaoDefinidaPeloUsuario()
-imprimeLinhaSeparadora("*", 30)
-imprimeMatrizComElementosZero(2, 2)
-imprimeLinhaSeparadora("*", 30)
-imprimeMatrizCompleta()
-imprimeLinhaSeparadora("*", 30)
-'''
+	linhaDiagonal = 0
+	colunaDiagonal = 0
+	for linha in range(len(matriz)):
+		for coluna in range(len(matriz[0])):
+			if linha + coluna > linhaDiagonal + colunaDiagonal:
+				matrizTriangularInferior[linha][coluna] = 0
+			else:
+				matrizTriangularInferior[linha][coluna] = matriz[linha][coluna]
+		linhaDiagonal += 1
+		colunaDiagonal += 1
+	return matrizTriangularInferior
+
+def criaMatrizTriangularSuperior(matriz):
+	"""
+  Cria uma matriz nova a partir de outra matriz zerando todos os elementos abaixo da diagonal principal
+  """
+	matrizTriangularSuperior = criaMatrizZerada(len(matriz),len(matriz[0]))
+
+	linhaDiagonal = 0
+	colunaDiagonal = 0
+	for linha in range(len(matriz)):
+		for coluna in range(len(matriz[0])):
+			if linha + coluna < linhaDiagonal + colunaDiagonal:
+				matrizTriangularSuperior[linha][coluna] = 0
+			else:
+				matrizTriangularSuperior[linha][coluna] = matriz[linha][coluna]
+		linhaDiagonal += 1
+		colunaDiagonal += 1
+	return matrizTriangularSuperior
+
